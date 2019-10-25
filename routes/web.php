@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('content.test');
+    return view('content.posts', ['posts' => App\Post::all()]);
 });
