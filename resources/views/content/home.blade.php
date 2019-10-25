@@ -1,6 +1,6 @@
 @extends('bases.content')
 
-@section('title', 'Posts')
+@section('title', 'Homepage')
 
 @section('content')
     @foreach ($posts as $post)
