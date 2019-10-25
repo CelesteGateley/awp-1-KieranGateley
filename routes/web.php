@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('content.home', ['posts' => App\Post::all()]);
+});
+
+Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
 });
