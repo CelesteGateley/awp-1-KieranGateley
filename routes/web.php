@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('content.home', ['posts' => App\Post::all()]);
-});
+})->name('home');
 
 Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
@@ -24,4 +24,9 @@ Route::get('/posts', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function() {
+    /**
+     * TODO: Implement proper change to fix auth redirecting to /home
+     */
+    return redirect('/');
+});
