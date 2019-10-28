@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
