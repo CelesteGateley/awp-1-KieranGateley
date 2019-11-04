@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Root Admin',
             'email' => 'root@localhost',
             'email_verified_at' => now(),
-            'password' => Hash::make('root_admin_password')
+            'password' => Hash::make('root')
         ]);
 
         $root_user->save();
