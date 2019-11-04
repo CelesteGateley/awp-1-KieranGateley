@@ -28,5 +28,5 @@ Route::get('/home', function() {
     /**
      * TODO: Implement proper change to fix auth redirecting to /home
      */
-    return redirect('/');
+    abort(404);
 });
