@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
-});
+})->name('all_posts');
 
 Route::get('/post/{id}', function($id) {
     return view('content.post', ['post' => App\Post::find($id),]);
-});
+})->name('post');
 
 Auth::routes();
 
