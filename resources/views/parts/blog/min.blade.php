@@ -6,7 +6,7 @@
             Written by <a href="#">{{ $author }}</a> on {{ $date }}
         </div>
         <div class="text-right" style="width: 29%; display: inline-block">
-            <a href="#">Read more...</a>
+            <a href="{{ route('post', ['id' => $id, ]) }}">Read more...</a>
         </div>
     </div>
 </div>
