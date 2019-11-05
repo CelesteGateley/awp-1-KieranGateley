@@ -27,5 +27,3 @@ Route::get('/post/{id}', function($id) {
 })->name('post');
 
 Auth::routes();
-
-Route::get('/home', function() { abort(404); });
