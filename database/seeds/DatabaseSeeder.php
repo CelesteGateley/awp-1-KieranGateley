@@ -3,8 +3,6 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +18,6 @@ class DatabaseSeeder extends Seeder
     }
 
     private function static_data() {
-        $this->roles();
         $root_user = User::create([
             'name' => 'Root Admin',
             'email' => 'root@localhost',
