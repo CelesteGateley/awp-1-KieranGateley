@@ -7,12 +7,9 @@
     <div class="navbar-collapse collapse" id="collapsingNavbar">
         <ul class="nav navbar-nav ml-auto">
         @if (Auth::check())
-            @can('manage_users')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Manage Users</a>
                 </li>
-            @endcan
-
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                 </li>

@@ -29,14 +29,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $root_user->save();
-        $root_user->assignRole('root');
     }
 
-    private function roles() {
-        $root_role = Role::create(['name' => 'root',]);
-        $manage_post_permission = Permission::create(['name' => 'manage_posts',]);
-        $manage_user_permission = Permission::create(['name' => 'manage_users',]);
-        $root_role->givePermissionTo($manage_post_permission);
-        $root_role->givePermissionTo($manage_user_permission);
-    }
 }
