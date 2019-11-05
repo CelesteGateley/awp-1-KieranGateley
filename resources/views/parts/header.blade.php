@@ -5,22 +5,26 @@
     </button>
 
     <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="nav navbar-nav ml-auto">
         @if (Auth::check())
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-            </li>
-        </ul>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> {{ csrf_field() }} </form>
+            @can('manage_users')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">Manage Users</a>
+                </li>
+            @endcan
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> {{ csrf_field() }} </form>
         @else
-        <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">Register</a>
             </li>
-        </ul>
         @endif
+        </ul>
     </div>
 </nav>
