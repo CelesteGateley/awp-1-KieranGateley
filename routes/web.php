@@ -22,6 +22,10 @@ Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
 });
 
+Route::get('/post/{id}', function($id) {
+    return view('content.post', ['post' => App\Post::find($id),]);
+});
+
 Auth::routes();
 
 Route::get('/home', function() {
