@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('content.home', ['posts' => App\Post::all()]);
+    return view('content.home', ['posts' => App\Post::latest()->paginate(10), ]);
 })->name('home');
 
 Route::get('/posts', function () {
