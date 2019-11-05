@@ -28,9 +28,4 @@ Route::get('/post/{id}', function($id) {
 
 Auth::routes();
 
-Route::get('/home', function() {
-    /**
-     * TODO: Implement proper change to fix auth redirecting to /home
-     */
-    abort(404);
-});
+Route::get('/home', function() { abort(404); });
