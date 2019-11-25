@@ -27,4 +27,17 @@ Route::get('/post/{post}', function(Post $post) {
     return view('content.post', ['post' => $post,]);
 })->name('post');
 
+Route::get('/post/{post}/delete', function(Post $post) {
+    $currentUser = Auth::user();
+    if ($currentUser == null) {
+        return redirect()->route('login');
+    } else if ($currentUser->is_administrator || $currentUser == $post->poster) {
+        $post->delete();
+        return redirect()->route('all_posts');
+    } else {
+        abort(403, 'User unable to delete selected post.');
+    }
+
+})->name('delete_post');
+
 Auth::routes();
