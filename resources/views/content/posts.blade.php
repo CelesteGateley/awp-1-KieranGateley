@@ -12,6 +12,9 @@
             <th scope="col">Title</th>
             <th scope="col">Created On</th>
             <th scope="col">Last Updated</th>
+            @if(Auth::check())
+                <th scope="col">Delete</th>
+            @endif
         </tr>
         </thead>
     @foreach ($posts as $post)
