@@ -11,6 +11,7 @@
 |
 */
 
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,8 @@ Route::get('/posts', function () {
     return view('content.posts', ['posts' => App\Post::all()]);
 })->name('all_posts');
 
-Route::get('/post/{id}', function($id) {
-    return view('content.post', ['post' => App\Post::find($id),]);
+Route::get('/post/{post}', function(Post $post) {
+    return view('content.post', ['post' => $post,]);
 })->name('post');
 
 Auth::routes();

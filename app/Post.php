@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     public function poster() {
-        $this->belongsTo('App/User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function author() {

@@ -15,7 +15,7 @@
         </tr>
         </thead>
     @foreach ($posts as $post)
-        @include('parts.blog.row', ['id' => $post->id, 'title' => $post->title, 'body' => $post->post, 'author' => $post->author(), 'created_on' => $post->created_at, 'updated_on' => $post->updated_at, ])
+        @include('parts.blog.row', ['id' => $post->id, 'title' => $post->title, 'body' => $post->post, 'author' => $post->poster->name, 'created_on' => $post->created_at, 'updated_on' => $post->updated_at, ])
     @endforeach
     </table>
 @endsection
