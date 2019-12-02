@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +15,18 @@ Route::get('/posts', function () {
 Route::get('/post/{post}', function(Post $post) {
     return view('content.post', ['post' => $post,]);
 })->name('post');
+
+Route::post('/post/create', function(Request $request) {
+    Post::create([
+        'title' => $request->input('title'),
+        'body' => $request->input('title'),
+        'title' => $request->input('title'),
+    ]);
+});
+
+Route::get('/post/create', function() {
+    return view('content.new_post');
+})->name('create_post');
 
 Route::get('/post/{post}/delete', function(Post $post) {
     $currentUser = Auth::user();
