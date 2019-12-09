@@ -38,7 +38,7 @@ class PostController extends Controller {
 
     public function updatePost(Request $request, Post $post) {
         $request->validate(Post::RULES);
-        $post->update($request->post);
+        $post->update(['title' => $request->title, 'body' => $request->body ]);
         return redirect()->route('all_posts');
     }
 

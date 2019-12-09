@@ -1,6 +1,3 @@
-@error('post')
-    @include('parts.error')
-@enderror
 <form action="{{ $action }}" method="post">
     @csrf
     <div id="form-group">
@@ -10,7 +7,7 @@
     <p></p>
     <div id="form-group">
         <label for="title-input">Body</label>
-        <textarea name="title" class="form-control" id="body-input" rows="5">{{ $body }}</textarea>
+        <textarea name="body" class="form-control" id="body-input" rows="5">{{ $body }}</textarea>
     </div>
     <p></p>
     <div id="form-group">
