@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 
 
 use App\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 
 class PostController extends Controller {
 
@@ -17,7 +17,7 @@ class PostController extends Controller {
     }
 
     public function createPost(Request $request) {
-        $request->validate(self::RULES);
+        $request->validate(Post::RULES);
         Post::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
@@ -37,7 +37,7 @@ class PostController extends Controller {
     }
 
     public function updatePost(Request $request, Post $post) {
-        $request->validate(self::RULES);
+        $request->validate(Post::RULES);
         $post->update($request->post);
         return redirect()->route('all_posts');
     }
