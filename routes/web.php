@@ -14,19 +14,9 @@ Auth::routes();
 /*
  * Post Creation
  */
-Route::get('/post/create', function() {
-    if (Auth::user() == null) { return redirect()->route('login'); }
-    return view('content.post.create_post');
-})->name('create_post');
+Route::get('/post/create', 'PostController@getCreatePost')->name('create_post');
 
-Route::post('/post/create', function(Request $request) {
-    $request->validate(self::RULES);
-    Post::create([
-        'title' => $request->input('title'),
-        'body' => $request->input('body'),
-        'user_id' => Auth::user()->id
-    ]);
-});
+Route::post('/post/create', 'PostController@createPost');
 
 /*
  * Post Reading
@@ -42,35 +32,12 @@ Route::get('/post/{post}', function(Post $post) {
 /*
  * Post Updating
  */
-Route::get('/post/{post}/edit', function(Post $post) {
-    $currentUser = Auth::user();
-    if ($currentUser == null) {
-        return redirect()->route('login');
-    } else if ($currentUser->is_administrator || $currentUser == $post->poster) {
-        return view('content.post.edit_post', ['post' => $post]);
-    } else {
-        return abort(403, 'User unable to edit selected post.');
-    }
-})->name('edit_post');
+Route::get('/post/{post}/edit', 'PostController@getUpdatePost')->name('edit_post');
 
-Route::post('/post/{post}/edit', function(Request $request, Post $post) {
-    $request->validate(self::RULES);
-    $post->update($request->post);
-    return redirect()->route('all_posts');
-});
+Route::post('/post/{post}/edit', 'PostController@updatePost');
 
 /*
  * Post Deletion
  */
-Route::get('/post/{post}/delete', function(Post $post) {
-    $currentUser = Auth::user();
-    if ($currentUser == null) {
-        return redirect()->route('login');
-    } else if ($currentUser->is_administrator || $currentUser == $post->poster) {
-        $post->delete();
-        return redirect()->route('all_posts');
-    } else {
-        return abort(403, 'User unable to delete selected post.');
-    }
-})->name('delete_post');
+Route::get('/post/{post}/delete', 'PostController@deletePost')->name('delete_post');
 
