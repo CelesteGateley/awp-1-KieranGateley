@@ -13,6 +13,7 @@
             <th scope="col">Created On</th>
             <th scope="col">Last Updated</th>
             @if(Auth::check())
+                <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             @endif
         </tr>
