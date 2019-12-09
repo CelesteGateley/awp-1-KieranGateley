@@ -5,6 +5,6 @@
 @section('content')
     @csrf
     <form action="{{ route('new_post') }}" method="post">
-        @include('parts.blog.form', [ $title = "", $body = ""])
+        @include('parts.post.form', [ $title = "", $body = ""])
     </form>
 @endsection

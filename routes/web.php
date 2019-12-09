@@ -16,7 +16,7 @@ Auth::routes();
  */
 Route::get('/post/create', function() {
     if (Auth::user() == null) { return redirect()->route('login'); }
-    return view('content.new_post');
+    return view('content.post.new_post');
 })->name('new_post');
 
 Route::post('/post/create', function(Request $request) {
@@ -31,11 +31,11 @@ Route::post('/post/create', function(Request $request) {
  * Post Reading
  */
 Route::get('/posts', function () {
-    return view('content.posts', ['posts' => App\Post::all()]);
+    return view('content.post.all_posts', ['posts' => App\Post::all()]);
 })->name('all_posts');
 
 Route::get('/post/{post}', function(Post $post) {
-    return view('content.post', ['post' => $post,]);
+    return view('content.post.single_post', ['post' => $post,]);
 })->name('post');
 
 /*
@@ -46,7 +46,7 @@ Route::get('/post/{post}/edit', function(Post $post) {
     if ($currentUser == null) {
         return redirect()->route('login');
     } else if ($currentUser->is_administrator || $currentUser == $post->poster) {
-        return view('content.edit_post', ['post' => $post]);
+        return view('content.post.edit_post', ['post' => $post]);
     } else {
         return abort(403, 'User unable to edit selected post.');
     }
