@@ -1,3 +1,6 @@
+@error('post')
+    @include('parts.error')
+@enderror
 <form action="{{ $action }}" method="post">
     <div id="form-group">
         <label for="title-input">Post Title</label>

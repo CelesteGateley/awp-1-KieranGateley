@@ -20,6 +20,7 @@ Route::get('/post/create', function() {
 })->name('create_post');
 
 Route::post('/post/create', function(Request $request) {
+    $request->validate(self::RULES);
     Post::create([
         'title' => $request->input('title'),
         'body' => $request->input('body'),
@@ -52,8 +53,9 @@ Route::get('/post/{post}/edit', function(Post $post) {
     }
 })->name('edit_post');
 
-Route::post('/post/{post}/edit', function(Post $post) {
-    $post->update(request($post));
+Route::post('/post/{post}/edit', function(Request $request, Post $post) {
+    $request->validate(self::RULES);
+    $post->update($request->post);
     return redirect()->route('all_posts');
 });
 
