@@ -16,17 +16,20 @@ Route::get('/post/{post}', function(Post $post) {
     return view('content.post', ['post' => $post,]);
 })->name('post');
 
+Route::get('/post/create', function() {
+    if (Auth::user() == null) { return redirect()->route('login'); }
+    return view('content.new_post');
+})->name('new_post');
+
 Route::post('/post/create', function(Request $request) {
     Post::create([
         'title' => $request->input('title'),
-        'body' => $request->input('title'),
-        'title' => $request->input('title'),
+        'body' => $request->input('body'),
+        'user_id' => Auth::user()->id
     ]);
 });
 
-Route::get('/post/create', function() {
-    return view('content.new_post');
-})->name('create_post');
+
 
 Route::get('/post/{post}/delete', function(Post $post) {
     $currentUser = Auth::user();
