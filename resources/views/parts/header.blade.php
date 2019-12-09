@@ -8,6 +8,9 @@
         <ul class="nav navbar-nav ml-auto">
         @if (Auth::check())
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('create_post') }}">Create Post</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('all_posts') }}">Manage Posts</a>
                 </li>
                 <li class="nav-item">
