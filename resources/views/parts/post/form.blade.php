@@ -2,6 +2,7 @@
     @include('parts.error')
 @enderror
 <form action="{{ $action }}" method="post">
+    @csrf
     <div id="form-group">
         <label for="title-input">Post Title</label>
         <input name="title" value="{{ $title }}" class="form-control" id="title-input">
