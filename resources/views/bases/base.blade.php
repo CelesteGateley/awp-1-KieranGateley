@@ -15,6 +15,14 @@
     <!-- Setup the Header -->
     @include('parts.header')
     <body class="bg-light">
+        @error('post')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                There was an Error in the Application
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </div>
+        @enderror
         @yield('body')
     </body>
 </html>
