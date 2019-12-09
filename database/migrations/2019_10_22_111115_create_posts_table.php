@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->string('title');
-            $table->longText('post');
+            $table->longText('body');
             $table->timestamps();
         });
     }
