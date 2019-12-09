@@ -9,7 +9,7 @@ class Post extends Model
     protected $fillable = [ "title", "body", "user_id" ];
 
     const RULES = [
-        'name' => 'required|min:1|max:256',
+        'title' => 'required|min:1|max:256',
         'body' => 'required|min:1'
     ];
 
