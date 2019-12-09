@@ -16,8 +16,8 @@ Auth::routes();
  */
 Route::get('/post/create', function() {
     if (Auth::user() == null) { return redirect()->route('login'); }
-    return view('content.post.new_post');
-})->name('new_post');
+    return view('content.post.create_post');
+})->name('create_post');
 
 Route::post('/post/create', function(Request $request) {
     Post::create([

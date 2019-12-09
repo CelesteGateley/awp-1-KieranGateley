@@ -4,7 +4,7 @@
 
 @section('content')
     @csrf
-    <form action="{{ route('new_post') }}" method="post">
+    <form action="{{ route('create_post') }}" method="post">
         @include('parts.post.form', [ $title = "", $body = ""])
     </form>
 @endsection
