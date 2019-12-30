@@ -6,6 +6,13 @@
 
     <div class="navbar-collapse collapse" id="collapsingNavbar">
         <ul class="nav navbar-nav ml-auto">
+            <form action="/search" method="POST" role="search">
+                {{ csrf_field() }}
+                <li>
+                    <input type="text" class="form-control" name="query" placeholder="Search Posts">
+                    <button type="submit">Submit Form</button>
+                </li>
+            </form>
         @if (Auth::check())
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('create_post') }}">Create Post</a>

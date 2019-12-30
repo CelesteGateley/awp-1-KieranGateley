@@ -36,6 +36,8 @@ Route::get('/post/{post}/edit', 'PostController@getUpdatePost')->name('edit_post
 
 Route::post('/post/{post}/edit', 'PostController@updatePost');
 
+Route::post('/search', 'PostController@searchPosts')->name('search_posts');
+
 /*
  * Post Deletion
  */

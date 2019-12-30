@@ -54,4 +54,16 @@ class PostController extends Controller {
         }
     }
 
+    public function searchPosts(Request $request) {
+        $queryString = $request->get('query');
+        $posts = Post::where('title', 'LIKE', '%' . $queryString . '%')->orWhere('body', 'LIKE', '%' . $queryString . '%')->get();
+        if (count($posts) < 1) {
+            return view('content.post.no_results');
+        } elseif (count($posts) == 1) {
+            return view('content.post.single_post', ['post' => $posts[0]]);
+        } else {
+            return view('content.post.search_results', ['posts' => $posts]);
+        }
+    }
+
 }
