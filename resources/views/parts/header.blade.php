@@ -6,11 +6,11 @@
 
     <div class="navbar-collapse collapse" id="collapsingNavbar">
         <ul class="nav navbar-nav ml-auto">
-            <form action="/search" method="POST" role="search">
+            <form action="/search" method="POST" role="search" class="form-inline">
                 {{ csrf_field() }}
-                <li>
-                    <input type="text" class="form-control" name="query" placeholder="Search Posts">
-                    <button type="submit">Submit Form</button>
+                <li class="nav-item">
+                    <input type="submit" style="visibility: hidden; width: 0" />
+                    <input type="text" class="form-control form-control-sm" name="query" placeholder="Search Posts">
                 </li>
             </form>
         @if (Auth::check())
