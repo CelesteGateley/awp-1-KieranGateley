@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers;
-
-
 
 use App\Post;
 use Illuminate\Http\Request;
@@ -11,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller {
 
+    /*
+     * Create Posts Block
+     */
     public function getCreatePost() {
         if (Auth::user() == null) { return redirect()->route('login'); }
         return view('content.post.create_post');
@@ -25,6 +25,9 @@ class PostController extends Controller {
         ]);
     }
 
+    /*
+     * Update Posts Block
+     */
     public function getUpdatePost(Post $post) {
         $currentUser = Auth::user();
         if ($currentUser == null) {
@@ -42,6 +45,9 @@ class PostController extends Controller {
         return redirect()->route('all_posts');
     }
 
+    /*
+     * Delete Posts Block
+     */
     public function deletePost(Post $post) {
         $currentUser = Auth::user();
         if ($currentUser == null) {
@@ -54,6 +60,10 @@ class PostController extends Controller {
         }
     }
 
+
+    /*
+     * Search Posts Block
+     */
     public function searchPosts(Request $request) {
         $queryString = $request->get('query');
         $posts = Post::where('title', 'LIKE', '%' . $queryString . '%')->orWhere('body', 'LIKE', '%' . $queryString . '%')->get();
