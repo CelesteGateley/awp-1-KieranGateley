@@ -43,3 +43,10 @@ Route::post('/search', 'PostController@searchPosts')->name('search_posts');
  */
 Route::get('/post/{post}/delete', 'PostController@deletePost')->name('delete_post');
 
+/*
+ * All Users
+ */
+Route::get('/users', function() {
+    if (Auth::user() == null) { return redirect()->route('login'); }
+    return view('content.users', ['users' => App\User::all()]);
+})->name('all_users');
