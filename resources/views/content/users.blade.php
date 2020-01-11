@@ -4,7 +4,7 @@
 
 @section('content')
     <table style="width: 100%;" class="table">
-        <caption>A table listing all Blog Posts</caption>
+        <caption>A table listing all users on the site</caption>
         <thead class="thead-dark">
         <tr>
             <th scope="col">User ID</th>
