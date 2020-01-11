@@ -2,8 +2,12 @@
 
 @section('title', 'All Posts')
 
+@section('scripts')
+    $(document).ready(function(){ $('#posts').DataTable(); });
+@endsection
+
 @section('content')
-    <table style="width: 100%;" class="table">
+    <table id="posts" style="width: 100%;" class="table">
         <caption>A table listing all Blog Posts</caption>
         <thead class="thead-dark">
         <tr>

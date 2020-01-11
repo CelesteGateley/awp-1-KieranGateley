@@ -2,8 +2,12 @@
 
 @section('title', 'All Users')
 
+@section('scripts')
+    $(document).ready(function(){ $('#users').DataTable(); });
+@endsection
+
 @section('content')
-    <table style="width: 100%;" class="table">
+    <table id="users" style="width: 100%;" class="table">
         <caption>A table listing all users on the site</caption>
         <thead class="thead-dark">
         <tr>
