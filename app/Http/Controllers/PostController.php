@@ -23,6 +23,7 @@ class PostController extends Controller {
             'body' => $request->input('body'),
             'user_id' => Auth::user()->id
         ]);
+        return redirect()->route('home');
     }
 
     /*
